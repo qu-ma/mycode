@@ -7,7 +7,7 @@ def showInstructions():
     RPG Game
     ========
     Instructions:
-      Get to the Garden with a key and a potion to win! Avoid the monsters! Commands include go direction and get item
+      Get to the Garden with a key and a potion to win! Avoid the monsters!
     Commands:
       go [direction]
       get [item]
