@@ -1,5 +1,5 @@
-#!/usr/bin/python3
-import sys
+#!/usr/bin/env python3
+import sys 
 import time
 
 # there's nothing wrong with this function, it's just some cool code!
@@ -17,11 +17,11 @@ def name_grabber():
          name= input("What is your name?\n>")
          num= input("Pick a number between 1 and 3")
          if name and num in ["1","2","3"]:
-             return name, num
+             return name, num 
 
 def main():
-    num_dict = {"1":"great","2":"awesome","3":"superb"}
-    name, num = name_grabber() # HINT: python error tracing doesn't always get the line number correct!
+    num_dict= {"1":"great","2":"awesome","3":"superb"}
+    name, num= name_grabber() # HINT: python error tracing doesn't always get the line number correct!
          # hmm, something's missing in that open() function...
     with open("horoscope.txt", "w") as fileobj:
         fileobj.write(f"{name}, I predict today will be {num_dict[num].upper()}!")
@@ -30,5 +30,6 @@ def main():
     # this gets written out with no spaces!
     # Fix the for loop to give a nicer output!
     for x in ["YOUR", "FUTURE", "HAS", "BEEN", "WRITTEN", "TO", "HOROSCOPE.TXT..."]:
-        print1by1(f'{x} ')
+        print1by1(x + " ")
+
 main()

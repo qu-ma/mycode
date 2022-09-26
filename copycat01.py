@@ -4,10 +4,10 @@ import shutil
 import os
 
 def main():
-
+    """ DOCSTRING INSIDE FUNCTION """
     # Start script in this specific directory
     os.chdir("/home/student/mycode")
-    
+
     # Copy a file
     shutil.copy("5g_research/sdn_network.txt", "5g_research/sdn_network.txt.copy")
 
