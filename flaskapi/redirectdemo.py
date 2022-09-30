@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """Alta3 Research
-Adding upload functionality to our scripting"""
+Simple flask application using redirect()"""
 
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 from flask import Flask
 from flask import redirect
 from flask import url_for
@@ -15,30 +13,6 @@ app = Flask(__name__)
 
 pic_location= "https://static.alta3.com/courses/api/lec_flaskcontrol_python/dont-panic.png"
 
-limiter = Limiter(
-    app,
-    key_func=get_remote_address,
-    default_limits=["200 per day", "50 per hour"]
-)
-
-@app.route("/upload")
-def upload():
-  print(pic_location)
-  return render_template("upload.html")
-
-@app.route("/uploader", methods = ["GET","POST"])
-def upload_file():
-  global pic_location
-  if request.method == "GET":  # if method is a get (same as "/upload")
-     return render_template("upload.html")
-  if request.method == "POST":
-     f = request.files["file"]
-     filename= f.filename
-     file_ext= filename.split(".")[-1]
-     pic_location= f"static/newpic.{file_ext}"
-     f.save("static/newpic." + file_ext)
-     return redirect("/")
-
 # if user sends GET to / (root)
 @app.route("/")
 def index():
@@ -46,7 +20,6 @@ def index():
 
 # if user sends GET or POST to /login
 @app.route("/login", methods = ["POST", "GET"])
-@limiter.limit("3 per day")
 def login():
     # if user sent a POST
     if request.method == "POST":
